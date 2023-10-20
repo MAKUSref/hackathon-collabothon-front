@@ -1,21 +1,39 @@
-import { createTheme } from '@mui/material';
+import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   typography: {
     h3: {
-      fontSize: '2rem'
+      fontSize: "2rem",
     },
     h4: {
-      fontSize: '1.4rem'
+      fontSize: "1.4rem",
+    },
+    h6: {
+      fontSize: "0.8rem",
+      fontWeight: "600",
+      letterSpacing: "1px",
     },
     body1: {
-      fontSize: '0.8rem'
+      fontSize: "0.7rem",
     },
     overline: {
-      fontSize: 'inherit',
-      textTransform: 'inherit',
-      fontWeight: '900',
-    }
+      fontSize: "inherit",
+      textTransform: "inherit",
+      fontWeight: "900",
+    },
+  },
+  components: {
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          color: "white",
+          "&:disabled": {
+            color: "white",
+            opacity: 0.4,
+          },
+        },
+      },
+    },
   },
 });
 

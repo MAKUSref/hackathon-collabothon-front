@@ -14,7 +14,7 @@ const Footer = () => {
       alignItems="center"
     >
       <img src={SolutionSmPng} />
-      <Typography variant="body1" fontSize="0.7rem">
+      <Typography fontSize="0.5rem">
         Supports <Typography variant="overline">Global Goals</Typography>
       </Typography>
     </Stack>

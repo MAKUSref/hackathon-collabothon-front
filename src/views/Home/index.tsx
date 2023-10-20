@@ -11,7 +11,7 @@ const Home = () => {
     if (!token) {
       navigate("/login");
     }
-  }, [token]);
+  }, [navigate, token]);
 
   return (
     <>
