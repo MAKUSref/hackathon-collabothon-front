@@ -12,7 +12,14 @@ const Home = () => {
     }
   }, [token]);
 
-  return <>Home</>;
+  return (
+    <>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error
+      ratione sapiente minima placeat aspernatur labore tempora rem repellat
+      iure, vel quas molestias quod excepturi dolorem, autem esse cupiditate
+      tempore.
+    </>
+  );
 };
 
 export default Home;
