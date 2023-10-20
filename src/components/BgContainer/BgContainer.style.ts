@@ -14,4 +14,8 @@ const StyledBgContainer = styled("div")`
   z-index: -1;
 `;
 
-export { StyledBgContainer };
+const StyledContainer = styled("div")`
+  padding: 10px;
+`
+
+export { StyledBgContainer, StyledContainer };

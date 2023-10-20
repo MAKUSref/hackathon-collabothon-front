@@ -2,11 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins"!important;
 }
 
 body {
-  background-color: blueviolet;
-  font-family: "Poppins";
+  font-family: "Poppins"!important;
   font-size: 22px;
   color: white;
 }
