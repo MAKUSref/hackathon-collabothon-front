@@ -1,13 +1,13 @@
 import { PropsWithChildren } from "react";
-import { StyledBgContainer } from "./BgContainer.style";
+import { StyledBgContainer, StyledContainer } from "./BgContainer.style";
 
-const BgContainer = ({children}: PropsWithChildren) => {
+const BgContainer = ({ children }: PropsWithChildren) => {
   return (
     <>
       <StyledBgContainer />
-      {children}
+      <StyledContainer>{children}</StyledContainer>
     </>
-  )
-}
+  );
+};
 
 export default BgContainer;

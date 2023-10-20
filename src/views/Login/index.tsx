@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { Box, Stack, Typography } from "@mui/material";
 import logoSvg from "../../assets/logo.svg";
 import Logo from "../../components/Logo";
+import Footer from "../../components/Footer";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -13,7 +14,7 @@ const Login = () => {
   const handleOnSuccess = (credentialResponse: CredentialResponse) => {
     const { credential } = credentialResponse;
     console.log(credentialResponse);
-    
+
     dispatch(setToken(credential ?? ""));
 
     navigate("/");
@@ -24,18 +25,23 @@ const Login = () => {
   };
 
   return (
-    <Stack>
-      <Box>
-        <img src={logoSvg} />
-      </Box>
-
-      <Logo />
-
-      <Typography>
-        Collect Carbon Credits from eco-frindly activieties and donate them to Global Goals
-      </Typography>
-
-      <GoogleLogin onSuccess={handleOnSuccess} onError={handleOnError} />
+    <Stack justifyContent="center" height="100vh">
+      <Stack>
+        <Stack direction="row" mb={4} justifyContent="center">
+          <img src={logoSvg} />
+        </Stack>
+        <Box my={2}>
+          <Logo size="l" />
+        </Box>
+        <Typography variant="body1" px={8} textAlign="center" mb={16}>
+          Collect Carbon Credits from eco-frindly activieties and donate them to{" "}
+          <strong>Global Goals</strong>
+        </Typography>
+        <Stack direction="row" justifyContent="center">
+          <GoogleLogin onSuccess={handleOnSuccess} onError={handleOnError} />
+        </Stack>
+      </Stack>
+      <Footer />
     </Stack>
   );
 };
