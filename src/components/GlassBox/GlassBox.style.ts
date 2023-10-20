@@ -18,10 +18,7 @@ const StyledBox = styled("div")<{
   left: 50%;
   transform: translateX(-50%);
   bottom: ${BOTTOM}px;
-  /* padding: 8px 21px 21px 21px; */
-  ${(props) =>
-    props.transition &&
-    "transition: height 300ms linear"}/* overflow-y: auto; */
+  ${(props) => props.transition && "transition: height 300ms linear"}
 `;
 
 const Dash = styled("div")`
