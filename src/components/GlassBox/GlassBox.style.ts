@@ -6,7 +6,11 @@ const StyledBox = styled("div")<{
   transition: boolean;
   height: number;
 }>`
-  background: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(
+    149deg,
+    rgba(255, 255, 255, 0.07) 8.34%,
+    rgba(255, 255, 255, 0.16) 83.92%
+  );
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.24);
   box-shadow: 10px 5px 24px -1px rgba(173, 173, 173, 0.35);
