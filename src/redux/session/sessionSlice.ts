@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
-type JWT = string;
+export type JWT = string;
 
 export interface SessionState {
   token?: JWT;
