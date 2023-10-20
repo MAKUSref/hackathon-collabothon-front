@@ -19,7 +19,10 @@ const Home = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
         error ratione sapiente minima placeat aspernatur labore tempora rem
         repellat iure, vel quas molestias quod excepturi dolorem, autem esse
-        cupiditate tempore.
+        cupiditate tempore. Lorem ipsum dolor sit amet consectetur adipisicing
+        elit. Temporibus error ratione sapiente minima placeat aspernatur labore
+        tempora rem repellat iure, vel quas molestias quod excepturi dolorem,
+        autem esse cupiditate tempore.
       </GlassBox>
     </>
   );

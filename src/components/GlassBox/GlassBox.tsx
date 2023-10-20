@@ -1,5 +1,5 @@
 import { useState, useRef, PropsWithChildren } from "react";
-import { StyledBox, Dash } from "./GlassBox.style";
+import { StyledBox, Dash, Content } from "./GlassBox.style";
 
 const MAX_HEIGHT = 470;
 const MIN_HEIGHT = 250;
@@ -44,7 +44,7 @@ const GlassBox = ({ children }: PropsWithChildren) => {
       transition={transition}
     >
       <Dash onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd} />
-      {children}
+      <Content height={height}>{children}</Content>
     </StyledBox>
   );
 };

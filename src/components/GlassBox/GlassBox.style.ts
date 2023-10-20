@@ -7,33 +7,37 @@ const StyledBox = styled("div")<{
   height: number;
 }>`
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(3px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  box-shadow: 10px 5px 24px -1px rgba(173, 173, 173, 0.35);
+  backdrop-filter: blur(20px);
   -webkit-backdrop-filtr: blur(3px);
-  width: 80%;
+  width: 90%;
   height: ${(props) => `${props.height}px`};
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
   bottom: ${BOTTOM}px;
-  padding: 20px;
-  ${(props) => props.transition && "transition: height 300ms linear"};
-  overflow-y: hidden;
+  /* padding: 8px 21px 21px 21px; */
+  ${(props) =>
+    props.transition &&
+    "transition: height 300ms linear"}/* overflow-y: auto; */
 `;
 
 const Dash = styled("div")`
   position: relative;
   width: 100%;
-  height: 2rem;
+  height: 21px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   &:after {
     position: absolute;
     content: "";
-    width: 100px;
-    height: 1px;
+    width: 42px;
+    height: 4px;
     background-color: #fff;
-    border-radius: 10%;
+    border-radius: 50px;
     text-align: center;
     top: 50%;
     left: 50%;
@@ -41,4 +45,11 @@ const Dash = styled("div")`
   }
 `;
 
-export { StyledBox, Dash };
+const Content = styled("div")<{ height: number }>`
+  overflow-y: auto;
+  width: 100%;
+  height: ${(props) => `${props.height - 50}px`};
+  padding: 0 21px 21px 21px;
+`;
+
+export { StyledBox, Dash, Content };
