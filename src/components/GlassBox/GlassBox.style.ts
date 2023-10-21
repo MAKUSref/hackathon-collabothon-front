@@ -22,6 +22,7 @@ const StyledBox = styled("div")<{
   left: 50%;
   transform: translateX(-50%);
   bottom: ${BOTTOM}px;
+  /* transition: height 300ms linear; */
   ${(props) => props.transition && "transition: height 300ms linear"}
 `;
 
@@ -51,6 +52,7 @@ const Content = styled("div")<{ height: number }>`
   width: 100%;
   height: ${(props) => `${props.height - 50}px`};
   padding: 0 21px 21px 21px;
+  font-size: 14px
 `;
 
 export { StyledBox, Dash, Content };
