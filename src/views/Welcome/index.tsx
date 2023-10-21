@@ -18,7 +18,7 @@ const Welcome = () => {
 
   const nextStep = () => {
     if (!isNextStep) {
-      navigate(PATHS.LOGIN);
+      navigate(PATHS.HOME);
       return;
     }
     setStepIndex((prev) => prev + 1);
