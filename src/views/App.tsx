@@ -1,10 +1,10 @@
-import { RouterProvider } from "react-router-dom";
-import { GoogleOAuthProvider } from "@react-oauth/google";
-import router from "../router";
-import { Provider } from "react-redux";
-import { store } from "../redux/store";
-import { ThemeProvider } from "@mui/material";
-import theme from "../theme/theme";
+import { RouterProvider } from 'react-router-dom';
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import router from '../router';
+import { Provider } from 'react-redux';
+import { store } from '../redux/store';
+import { ThemeProvider } from '@mui/material';
+import theme from '../theme/theme';
 
 const App = () => {
   return (

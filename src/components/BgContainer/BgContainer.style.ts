@@ -15,7 +15,7 @@ const StyledBgContainer = styled("div")`
 `;
 
 const StyledContainer = styled("div")`
-  padding: 10px;
-`
+  padding: 0 10px;
+`;
 
 export { StyledBgContainer, StyledContainer };
