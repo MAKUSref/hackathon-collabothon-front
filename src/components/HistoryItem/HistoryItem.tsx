@@ -13,7 +13,7 @@ const HistoryItem = ({ amount, appLogo, appTitle, action }: HistoryItemI) => {
   return (
     <Stack direction="row" mb={3}>
       <img src={appLogo} height={47} width={47} />
-      <Stack ml={3} direction="column" justifyContent="center">
+      <Stack ml={3} width="100%" direction="column" justifyContent="center">
         <Box sx={{ fontSize: "14px", fontWeight: 600 }}>{appTitle}</Box>
         <Box
           sx={{
