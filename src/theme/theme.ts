@@ -2,6 +2,9 @@ import { createTheme } from "@mui/material";
 
 const theme = createTheme({
   typography: {
+    h1: {
+      fontSize: '8rem'
+    },
     h3: {
       fontSize: "2rem",
     },

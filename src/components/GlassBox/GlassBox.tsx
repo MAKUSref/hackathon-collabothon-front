@@ -1,8 +1,9 @@
 import { useState, useRef, PropsWithChildren } from "react";
 import { StyledBox, Dash, Content } from "./GlassBox.style";
 
-const MAX_HEIGHT = 470;
-const MIN_HEIGHT = 250;
+// const MAX_HEIGHT = 570;
+const MAX_HEIGHT = document.documentElement.clientHeight * 0.8;
+const MIN_HEIGHT = document.documentElement.clientHeight * 0.4;
 
 const GlassBox = ({ children }: PropsWithChildren) => {
   const [height, setHeight] = useState(MIN_HEIGHT);
@@ -13,7 +14,8 @@ const GlassBox = ({ children }: PropsWithChildren) => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!swiperRef.current) return;
 
-    const screen = window.innerHeight;
+    // const screen = window.innerHeight;
+    const screen = document.documentElement.clientHeight;
     const position = e.touches[0].pageY;
 
     const swiperStyles = swiperRef.current.getBoundingClientRect();

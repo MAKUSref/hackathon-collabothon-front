@@ -7,6 +7,7 @@ const Footer = () => {
       width="100%"
       position="absolute"
       bottom="0"
+      left="0"
       pb={3}
       gap={1}
       direction="row"
