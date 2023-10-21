@@ -4,6 +4,7 @@ import PATH from "./paths";
 import Login from "../views/Login";
 import BgContainer from "../components/BgContainer";
 import Welcome from "../views/Welcome";
+import GlobalGoals from "../views/GlobalGoals";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: PATH.LOGIN,
         element: <Login />,
+      },
+      {
+        path: PATH.GLOBAL_GOALS,
+        element: <GlobalGoals />,
       },
     ],
   },

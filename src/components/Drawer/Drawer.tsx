@@ -10,22 +10,43 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  Divider,
+  Stack,
 } from "@mui/material";
 import MenuRoundedIcon from "@mui/icons-material/MenuRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import WidgetsRoundedIcon from "@mui/icons-material/WidgetsRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import userIcon from "../../assets/user-profile.jpg";
+import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
+import { useAppSelector } from "../../redux/hooks";
+
+interface ItemProps {
+  label: string;
+  icon: ReactJSXElement;
+  action: () => void;
+}
+
+const Item = ({ action, label, icon }: ItemProps) => {
+  return (
+    <ListItem sx={{ color: "#fff" }}>
+      <ListItemButton onClick={action}>
+        <ListItemIcon sx={{ color: "#fff", minWidth: "40px" }}>
+          {icon}
+        </ListItemIcon>
+        <ListItemText primary={label} />
+      </ListItemButton>
+    </ListItem>
+  );
+};
 
 const Drawer = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { email, picture, username } = useAppSelector((state) => state.session);
 
   return (
     <>
       <IconButton
-        sx={{ color: "#fff", marginLeft: "15px", marginTop: "5px" }}
+        sx={{ marginTop: "5px" }}
         onClick={() => setIsOpen((prev) => !prev)}
       >
         <MenuRoundedIcon />
@@ -40,122 +61,63 @@ const Drawer = () => {
       >
         <Box
           sx={{
-            width: "auto",
             height: "100%",
             background:
               "linear-gradient(180deg, #1D0093 0.42%, #6038FF 37.39%, #6038FF 40.6%, #8423FF 122.11%)",
           }}
-          role="presentation"
           onClick={() => setIsOpen((prev) => !prev)}
         >
-          <IconButton
-            sx={{ color: "#fff", marginLeft: "21px", marginTop: "5px" }}
-          >
+          <IconButton sx={{ marginLeft: "10px", marginTop: "5px" }}>
             <CloseRoundedIcon />
           </IconButton>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              textAlign: "center",
-              width: "100%",
-              height: "200px",
-            }}
-          >
+          <Stack justifyContent="center" alignItems="center" mt={5}>
             <Avatar
-              sx={{ width: 100, height: 100, alignSelf: "center" }}
-              src={userIcon}
+              sx={{ width: 120, height: 120, border: "5px white solid" }}
+              src={picture}
             />
-            <Typography
-              sx={{
-                fontSize: "14px",
-                fontWeight: 600,
-                color: "#fff",
-                marginTop: "17px",
-              }}
-            >
-              Johny Deep
+            <Typography fontSize="17px" fontWeight={600} mt={3} color="white">
+              {username}
             </Typography>
             <Typography
+              fontSize="10px"
+              mt="5px"
+              mb={2}
+              color="white"
               sx={{
-                fontSize: "10px",
-                fontWeight: 600,
-                color: "#9A9A9A",
-                marginTop: "6px",
+                opacity: 0.7,
               }}
             >
-              johny.deep@gmail.com
+              {email}
             </Typography>
-          </Box>
-          <Box sx={{ display: "flex", flexDirection: "column" }}>
+          </Stack>
+          <Stack>
             <Typography
-              sx={{
-                fontSize: "12px",
-                fontWeight: 600,
-                color: "#fff",
-                marginLeft: "60px",
-                marginBottom: "5px",
-              }}
+              fontSize="10px"
+              fontWeight={600}
+              mt={1}
+              color="white"
+              ml={4}
             >
               Settings
             </Typography>
-            <nav aria-label="main mailbox folders">
-              <List>
-                <ListItem
-                  sx={{ paddingLeft: "42px", color: "#fff" }}
-                  disablePadding
-                >
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <HelpOutlineRoundedIcon sx={{ color: "#fff" }} />
-                    </ListItemIcon>
-                    <ListItemText primary="About this app & Credit Carbon Info" />
-                  </ListItemButton>
-                </ListItem>
-                <Divider
-                  sx={{
-                    margin: "0 20px",
-                    borderColor: "rgba(237, 237, 237, 0.13)",
-                  }}
-                />
-                <ListItem
-                  sx={{ paddingLeft: "42px", color: "#fff" }}
-                  disablePadding
-                >
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <WidgetsRoundedIcon sx={{ color: "#fff" }} />
-                    </ListItemIcon>
-                    <ListItemText primary="See apps" />
-                  </ListItemButton>
-                </ListItem>
-                <Divider
-                  sx={{
-                    margin: "0 20px",
-                    borderColor: "rgba(237, 237, 237, 0.13)",
-                  }}
-                />
-                <ListItem
-                  sx={{ paddingLeft: "42px", color: "#fff" }}
-                  disablePadding
-                >
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <LogoutRoundedIcon sx={{ color: "#fff" }} />
-                    </ListItemIcon>
-                    <ListItemText primary="Sign out" />
-                  </ListItemButton>
-                </ListItem>
-                <Divider
-                  sx={{
-                    margin: "0 20px",
-                    borderColor: "rgba(237, 237, 237, 0.13)",
-                  }}
-                />
-              </List>
-            </nav>
-          </Box>
+            <List>
+              <Item
+                label="About this app & Credit Carbon Info"
+                action={() => {}}
+                icon={<HelpOutlineRoundedIcon />}
+              />
+              <Item
+                label="See apps"
+                action={() => {}}
+                icon={<WidgetsRoundedIcon />}
+              />
+              <Item
+                label="Sign out"
+                action={() => {}}
+                icon={<LogoutRoundedIcon />}
+              />
+            </List>
+          </Stack>
         </Box>
       </SwipeableDrawer>
     </>

@@ -1,0 +1,10 @@
+.navigation-top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}

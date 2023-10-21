@@ -1,0 +1,21 @@
+.global-goals-content {
+  height: 670px;
+  box-sizing: content-box;
+  /* margin-bottom: 100px; */
+  /* margin-top: 56px; */
+  /* display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px; */
+  overflow: scroll;
+}
+
+.global-goal {
+  height: 158px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* width: ; */
+}

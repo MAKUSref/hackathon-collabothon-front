@@ -12,3 +12,10 @@ body {
   font-size: 22px;
   color: white;
 }
+
+.page-with-navigation {
+  height: 100%;
+  padding-top: 60px;
+  overflow: scroll;
+  box-sizing: border-box;
+}
