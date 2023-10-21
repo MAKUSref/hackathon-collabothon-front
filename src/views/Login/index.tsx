@@ -38,7 +38,15 @@ const Login = () => {
           <strong>Global Goals</strong>
         </Typography>
         <Stack direction="row" justifyContent="center">
-          <GoogleLogin onSuccess={handleOnSuccess} onError={handleOnError} />
+          <GoogleLogin
+            containerProps={{ style: { padding: "20px" } }}
+            shape="pill"
+            theme="filled_blue"
+            size="large"
+            width="341px"
+            onSuccess={handleOnSuccess}
+            onError={handleOnError}
+          />
         </Stack>
       </Stack>
       <Footer />
