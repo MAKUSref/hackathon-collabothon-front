@@ -49,7 +49,7 @@ const Drawer = () => {
           onClick={() => setIsOpen((prev) => !prev)}
         >
           <IconButton
-            sx={{ color: "#fff", marginLeft: "19px", marginTop: "15px" }}
+            sx={{ color: "#fff", marginLeft: "21px", marginTop: "5px" }}
           >
             <CloseRoundedIcon />
           </IconButton>
