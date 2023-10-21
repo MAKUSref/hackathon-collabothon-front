@@ -12,6 +12,7 @@ import ccSmSvg from "../../assets/ccSm.svg";
 import mapMyRun from "../../assets/mapy-my-run.png";
 import forest from "../../assets/forest.png";
 import globalGoals from "../../assets/global-goals.jpg";
+import PATHS from "../../router/paths";
 
 const DonateBtn = styled(Button)({
   borderRadius: "40px",
@@ -25,6 +26,7 @@ const DonateBtn = styled(Button)({
   position: "fixed",
   transform: "translateX(-50%)",
   bottom: "20px",
+  textTransform: "capitalize",
 });
 
 const Home = () => {
@@ -74,6 +76,9 @@ const Home = () => {
         />
       </GlassBox>
       <DonateBtn
+        onClick={() => {
+          navigate(PATHS.GLOBAL_GOALS);
+        }}
         sx={{
           justifyContent: "start",
           paddingLeft: "25px",
@@ -81,11 +86,8 @@ const Home = () => {
           fontWeight: 500,
         }}
       >
-        Donate{" "}
-        <span style={{ fontWeight: 700, marginLeft: "8px" }}>
-          {" "}
-          Global Goals
-        </span>
+        Donate
+        <span style={{ fontWeight: 700, marginLeft: "8px" }}>Global Goals</span>
         <Box
           sx={{
             width: "50px",
