@@ -6,6 +6,8 @@
 }
 
 body {
+  overscroll-behavior: none;
+  overflow: hidden;
   font-family: "Poppins" !important;
   font-size: 22px;
   color: white;

@@ -31,11 +31,11 @@ const Home = () => {
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.session.token);
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/login");
-    }
-  }, [navigate, token]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate("/login");
+  //   }
+  // }, [navigate, token]);
 
   return (
     <>
@@ -47,13 +47,15 @@ const Home = () => {
           alignItems="center"
           justifyContent="center"
         >
-          <Typography textAlign="center">Your Carbon Credits</Typography>
+          <Typography sx={{ userSelect: "none" }} textAlign="center">
+            Your Carbon Credits
+          </Typography>
           <img src={ccSmSvg} />
         </Stack>
-        <Typography variant="h1" textAlign="center">
+        <Typography sx={{ userSelect: "none" }} variant="h1" textAlign="center">
           23<StyledCCSmall>.88</StyledCCSmall>
         </Typography>
-        <Box mb={4} textAlign="center">
+        <Box sx={{ userSelect: "none" }} mb={4} textAlign="center">
           <img src={logoLSvg} />
         </Box>
       </Stack>
