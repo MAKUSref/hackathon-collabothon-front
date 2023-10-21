@@ -14,7 +14,6 @@ const GlassBox = ({ children }: PropsWithChildren) => {
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
     if (!swiperRef.current) return;
 
-    // const screen = window.innerHeight;
     const screen = document.documentElement.clientHeight;
     const position = e.touches[0].pageY;
 
