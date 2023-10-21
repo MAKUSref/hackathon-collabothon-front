@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../redux/hooks";
 import GlassBox from "../../components/GlassBox/GlassBox";
+import Drawer from "../../components/Drawer/Drawer";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Home = () => {
 
   return (
     <>
+      <Drawer />
       <GlassBox>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
         error ratione sapiente minima placeat aspernatur labore tempora rem
