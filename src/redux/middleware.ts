@@ -25,8 +25,6 @@ sessionListenerMiddleware.startListening({
 saveCookieMiddleware.startListening({
   matcher: isAnyOf(setToken),
   effect: (_action, listenerApi) => {
-    console.log('adasd');
-    
     const token = (listenerApi.getState() as RootState).session.token ?? "";
 
     Cookie.set(LOCAL_SESSION_KEY, token, {

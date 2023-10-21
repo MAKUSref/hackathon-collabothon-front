@@ -30,7 +30,7 @@ const GlassBox = ({ children }: PropsWithChildren) => {
   const handleTouchEnd = () => {
     setTransition(true);
 
-    const avg = (MAX_HEIGHT - MIN_HEIGHT) / 2;
+    const avg = (MAX_HEIGHT - MIN_HEIGHT) * 0.15;
     const swapBorder = MIN_HEIGHT + avg;
 
     setHeight((prev) => (prev <= swapBorder ? MIN_HEIGHT : MAX_HEIGHT));
