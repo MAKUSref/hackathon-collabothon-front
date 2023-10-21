@@ -31,11 +31,11 @@ const Home = () => {
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.session.token);
 
-  // useEffect(() => {
-  //   if (!token) {
-  //     navigate("/login");
-  //   }
-  // }, [navigate, token]);
+  useEffect(() => {
+    if (!token) {
+      // navigate("/login");
+    }
+  }, [navigate, token]);
 
   return (
     <>
