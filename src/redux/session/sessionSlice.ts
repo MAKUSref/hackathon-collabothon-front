@@ -7,6 +7,7 @@ export interface SessionState {
   token?: JWT;
   email?: string;
   username?: string;
+  picture?: string;
 }
 
 const initialState: SessionState = {};
@@ -18,16 +19,21 @@ const sessionSlice = createSlice({
     setToken(state, action: PayloadAction<JWT>) {
       state.token = action.payload;
       
-      const { email, name } = jwt_decode(action.payload) as {
+      const { email, name, picture } = jwt_decode(action.payload) as {
         email: string;
         name: string;
+        picture: string;
       };
 
       state.email = email;
       state.username = name;
+      state.picture = picture;
     },
     clearCurrentSessionData(state) {
       state.token = undefined;
+      state.email = undefined;
+      state.username = undefined;
+      state.picture = undefined;
     },
     logOut(state) {
       sessionSlice.caseReducers.clearCurrentSessionData(state);

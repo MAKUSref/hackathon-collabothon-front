@@ -33,14 +33,14 @@ const Home = () => {
 
   useEffect(() => {
     if (!token) {
-      // navigate("/login");
+      navigate("/login");
     }
   }, [navigate, token]);
 
   return (
     <>
       <Drawer />
-      <Stack mt={5}>
+      <Stack mt={3}>
         <Stack
           direction="row"
           gap={1}
