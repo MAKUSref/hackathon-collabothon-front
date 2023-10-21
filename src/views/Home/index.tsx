@@ -1,20 +1,23 @@
 import { useEffect } from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useAppSelector } from "../../redux/hooks";
 import GlassBox from "../../components/GlassBox/GlassBox";
 import Drawer from "../../components/Drawer/Drawer";
+import HistoryItem from "../../components/HistoryItem/HistoryItem";
 import { Box, Stack, Typography } from "@mui/material";
 import logoLSvg from "../../assets/logoL.svg";
 import { StyledCCSmall } from "./Home.style";
 import ccSmSvg from "../../assets/ccSm.svg";
+import mapMyRun from "../../assets/mapy-my-run.png";
+import forest from "../../assets/forest.png";
 
 const Home = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const token = useAppSelector((state) => state.session.token);
 
   useEffect(() => {
     if (!token) {
-      // navigate("/login");
+      navigate("/login");
     }
   }, [navigate, token]);
 
@@ -39,13 +42,18 @@ const Home = () => {
         </Box>
       </Stack>
       <GlassBox>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus
-        error ratione sapiente minima placeat aspernatur labore tempora rem
-        repellat iure, vel quas molestias quod excepturi dolorem, autem esse
-        cupiditate tempore. Lorem ipsum dolor sit amet consectetur adipisicing
-        elit. Temporibus error ratione sapiente minima placeat aspernatur labore
-        tempora rem repellat iure, vel quas molestias quod excepturi dolorem,
-        autem esse cupiditate tempore.
+        <HistoryItem
+          amount={0.2}
+          appLogo={forest}
+          appTitle="Forest"
+          action="Flora"
+        />
+        <HistoryItem
+          amount={0.3}
+          appLogo={mapMyRun}
+          appTitle="Map my run"
+          action="Transport"
+        />
       </GlassBox>
     </>
   );
