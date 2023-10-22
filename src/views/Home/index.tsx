@@ -78,7 +78,9 @@ const Home = () => {
   }, [navigate, token]);
 
   useEffect(() => {
-    refetch();
+    const id = setInterval(() => refetch(), 2000);
+
+    return () => clearInterval(id);
   }, [refetch]);
 
   return (

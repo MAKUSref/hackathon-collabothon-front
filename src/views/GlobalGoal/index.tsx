@@ -13,6 +13,7 @@ import {
 } from "../../redux/api/carbbynApi";
 import { useAppDispatch } from "../../redux/hooks";
 import { setFirstDonateAchievement } from "../../redux/session/sessionSlice";
+import ccSmSvg from "../../assets/ccSm.svg";
 
 const GlobalGoal = () => {
   const { id } = useParams();
@@ -77,12 +78,22 @@ const GlobalGoal = () => {
               support for their families
             </Typography>
           </Box>
+          <Stack direction="row" justifyContent="center" mt="55px">
+            <Typography>1</Typography>
+            <img
+              style={{ marginLeft: "6px", marginRight: "2px"}}
+              width="15px"
+              height="15px"
+              src={ccSmSvg}
+            />
+            <Typography ml="2px">= 8.20$</Typography>
+          </Stack>
+
           <Box
             sx={{
               display: "flex",
               justifyContent: "center",
               padding: "10px",
-              marginTop: "55px",
             }}
           >
             <Button
