@@ -12,7 +12,9 @@ interface HistoryItemI {
 const HistoryItem = ({ amount, appLogo, appTitle, action }: HistoryItemI) => {
   return (
     <Stack direction="row" mb={3}>
-      <img src={appLogo} height={47} width={47} />
+      <Box>
+        <img src={appLogo} height={47} width={47} />
+      </Box>
       <Stack ml={3} width="100%" direction="column" justifyContent="center">
         <Box sx={{ fontSize: "14px", fontWeight: 600 }}>{appTitle}</Box>
         <Box

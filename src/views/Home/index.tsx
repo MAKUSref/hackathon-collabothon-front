@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router";
 import { useAppSelector } from "../../redux/hooks";
 import GlassBox from "../../components/GlassBox/GlassBox";
@@ -9,10 +9,9 @@ import { Box, Stack, Typography, styled } from "@mui/material";
 import logoLSvg from "../../assets/logoL.svg";
 import { StyledCCSmall } from "./Home.style";
 import ccSmSvg from "../../assets/ccSm.svg";
-import mapMyRun from "../../assets/mapy-my-run.png";
-import forest from "../../assets/forest.png";
 import globalGoals from "../../assets/global-goals.jpg";
 import PATHS from "../../router/paths";
+import { useGetCCQuery, useGetHistoryQuery } from "../../redux/api/carbbynApi";
 
 const DonateBtn = styled(Button)({
   borderRadius: "40px",
@@ -29,9 +28,30 @@ const DonateBtn = styled(Button)({
   textTransform: "capitalize",
 });
 
+function getInt(num?: number) {
+  if (!num) return "0";
+
+  return String(parseInt(String(num)));
+}
+
+function getFloat(num?: number) {
+  if (!num) return "00";
+  if (Number.isInteger(num)) return "00";
+
+  return String(num).split(".")[1].substring(0, 2);
+}
+
 const Home = () => {
+  const { data: cc } = useGetCCQuery();
+  const { data: resHistory } = useGetHistoryQuery();
+
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.session.token);
+
+  const reversedHistory = useMemo(
+    () => resHistory?.history.slice().reverse(),
+    [resHistory]
+  );
 
   useEffect(() => {
     if (!token) {
@@ -55,25 +75,24 @@ const Home = () => {
           <img src={ccSmSvg} />
         </Stack>
         <Typography sx={{ userSelect: "none" }} variant="h1" textAlign="center">
-          23<StyledCCSmall>.88</StyledCCSmall>
+          {getInt(cc)}
+          <StyledCCSmall>.{getFloat(cc)}</StyledCCSmall>
         </Typography>
         <Box sx={{ userSelect: "none" }} mb={4} textAlign="center">
           <img src={logoLSvg} />
         </Box>
       </Stack>
       <GlassBox>
-        <HistoryItem
-          amount={0.2}
-          appLogo={forest}
-          appTitle="Forest"
-          action="Flora"
-        />
-        <HistoryItem
-          amount={0.3}
-          appLogo={mapMyRun}
-          appTitle="Map my run"
-          action="Transport"
-        />
+        {!resHistory?.history.length && <div>No transaction history yet</div>}
+        {reversedHistory?.map((historyItem, i) => (
+          <HistoryItem
+            key={i}
+            amount={historyItem.cc}
+            appLogo={historyItem.linkedApp.logo}
+            appTitle={historyItem.linkedApp.name}
+            action="Flora"
+          />
+        ))}
       </GlassBox>
       <DonateBtn
         onClick={() => {

@@ -18,7 +18,8 @@ import HelpOutlineRoundedIcon from "@mui/icons-material/HelpOutlineRounded";
 import WidgetsRoundedIcon from "@mui/icons-material/WidgetsRounded";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logOut } from "../../redux/session/sessionSlice";
 
 interface ItemProps {
   label: string;
@@ -42,6 +43,7 @@ const Item = ({ action, label, icon }: ItemProps) => {
 const Drawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { email, picture, username } = useAppSelector((state) => state.session);
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -113,7 +115,7 @@ const Drawer = () => {
               />
               <Item
                 label="Sign out"
-                action={() => {}}
+                action={() => dispatch(logOut())}
                 icon={<LogoutRoundedIcon />}
               />
             </List>

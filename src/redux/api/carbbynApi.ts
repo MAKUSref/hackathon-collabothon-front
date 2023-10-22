@@ -7,8 +7,15 @@ export interface LinkedApp {
 
 export interface HistoryItem {
   linkedApp: LinkedApp;
-  CC: number;
-  dateTime: string; //DD-MM-YYTHH-mm-ss
+  cc: number;
+  date: string;
+}
+
+interface GetHistoryResponse {
+  email: string;
+  cc: number;
+  history: HistoryItem[];
+  spentCC: unknown[];
 }
 
 export const carbbynApi = baseApi.injectEndpoints({
@@ -16,10 +23,10 @@ export const carbbynApi = baseApi.injectEndpoints({
     login: builder.mutation<{ message: string }, void>({
       query: () => "/ping",
     }),
-    getCC: builder.query<{ CC: number }, void>({
+    getCC: builder.query<number, void>({
       query: () => "/self/cc",
     }),
-    getHistory: builder.query<HistoryItem[], void>({
+    getHistory: builder.query<GetHistoryResponse, void>({
       query: () => "/self/history",
     }),
     getLinkedApps: builder.query<LinkedApp[], void>({
@@ -31,4 +38,9 @@ export const carbbynApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useLoginMutation } = carbbynApi;
+export const {
+  useLoginMutation,
+  useGetCCQuery,
+  useGetHistoryQuery,
+  useGetLinkedAppQuery,
+} = carbbynApi;
