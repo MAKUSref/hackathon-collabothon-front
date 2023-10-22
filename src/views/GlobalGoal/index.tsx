@@ -6,11 +6,26 @@ import PATHS from "../../router/paths";
 import { globalGoals } from "../GlobalGoals/goals";
 import money from "../../assets/money.png";
 import "./style.css";
+import {
+  useGetCCBySolutionQuery,
+  useSpentCCMutation,
+} from "../../redux/api/carbbynApi";
 
 const GlobalGoal = () => {
   const { id } = useParams();
-
   const goal = globalGoals[Number(id || 1) - 1];
+
+  const { data: getCCBySolutionResponse } = useGetCCBySolutionQuery(goal.type);
+
+  const [spentCC] = useSpentCCMutation();
+
+  const handleSpentCC = () => {
+    if (!goal) return;
+
+    spentCC(goal.type)
+      .then(() => console.log("donated"))
+      .catch(console.log);
+  };
 
   return (
     <Box className="page-with-navigation" bgcolor={goal.color} height="100vh">
@@ -23,15 +38,15 @@ const GlobalGoal = () => {
       <Stack paddingTop={3} justifyContent="space-between" height="100%" px={2}>
         <Stack paddingTop={2} sx={{ zIndex: 1 }} className="charity-card">
           <Grid container>
-            <Grid item xs={5}>
+            <Grid item xs={6}>
               <Box m={2}>
                 <Typography>Donated by now:</Typography>
                 <Typography my={2} variant="h3">
-                  65 $
+                  {getCCBySolutionResponse ? Math.floor(getCCBySolutionResponse?.cc * 100 * 8.2) / 100 : 0} $
                 </Typography>
               </Box>
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={6}>
               <Typography m={2} variant="h4">
                 {goal.id}. {goal.goal}
               </Typography>
@@ -69,12 +84,13 @@ const GlobalGoal = () => {
                 },
               }}
               variant="outlined"
+              onClick={handleSpentCC}
             >
               Donate
             </Button>
           </Box>
         </Stack>
-        <Box sx={{ position: "absolute", left: 0, bottom: "150px" }}>
+        <Box sx={{ position: "absolute", left: 0, bottom: "170px" }}>
           <img src={money} />
         </Box>
         <Box>
