@@ -1,8 +1,8 @@
 import { useState, useRef, PropsWithChildren } from "react";
 import { StyledBox, Dash, Content } from "./GlassBox.style";
 
-const MAX_HEIGHT = document.documentElement.clientHeight * 0.8;
-const MIN_HEIGHT = document.documentElement.clientHeight * 0.4;
+const MAX_HEIGHT = document.documentElement.clientHeight * 0.65;
+const MIN_HEIGHT = document.documentElement.clientHeight * 0.25;
 
 const GlassBox = ({ children }: PropsWithChildren) => {
   const [height, setHeight] = useState(MIN_HEIGHT);

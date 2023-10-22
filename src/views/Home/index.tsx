@@ -5,14 +5,18 @@ import GlassBox from "../../components/GlassBox/GlassBox";
 import Button from "@mui/material/Button";
 import Drawer from "../../components/Drawer/Drawer";
 import HistoryItem from "../../components/HistoryItem/HistoryItem";
-import { Box, Stack, Typography, styled } from "@mui/material";
+import { Box, IconButton, Stack, Typography, styled } from "@mui/material";
 import logoLSvg from "../../assets/logoL.svg";
 import { StyledCCSmall } from "./Home.style";
 import ccSmSvg from "../../assets/ccSm.svg";
 import globalGoals from "../../assets/global-goals.jpg";
 import PATHS from "../../router/paths";
+import WidgetsRoundedIcon from "@mui/icons-material/WidgetsRounded";
 import { useGetCCQuery, useGetHistoryQuery } from "../../redux/api/carbbynApi";
 import { StyledContainer } from "../../components/BgContainer/BgContainer.style";
+import Grid from "@mui/material/Grid";
+import achievment1 from "../../assets/achievment1.png";
+import achievment2 from "../../assets/achievment2.png";
 
 const DonateBtn = styled(Button)({
   borderRadius: "40px",
@@ -95,6 +99,35 @@ const Home = () => {
           />
         ))}
       </GlassBox>
+      <Grid
+        container
+        alignItems="center"
+        marginTop={8}
+        padding="8px 8px 0 15px"
+      >
+        <Grid sx={{ fontSize: "12px" }} item xs={10}>
+          Achievements
+        </Grid>
+        <Grid textAlign="right" item xs={2}>
+          <IconButton>
+            <WidgetsRoundedIcon sx={{ width: "12px" }} />
+          </IconButton>
+        </Grid>
+      </Grid>
+      <Grid container alignItems="center">
+        <Grid item xs={2}>
+          <IconButton sx={{ paddingTop: 0 }}>
+            <img src={achievment1} width="61px" height="61px" />
+          </IconButton>
+        </Grid>
+        <Grid item xs={2}>
+          <IconButton>
+            <IconButton sx={{ paddingTop: 0 }}>
+              <img src={achievment2} />
+            </IconButton>
+          </IconButton>
+        </Grid>
+      </Grid>
       <DonateBtn
         onClick={() => {
           navigate(PATHS.GLOBAL_GOALS);

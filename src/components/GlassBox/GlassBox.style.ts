@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-const BOTTOM = 110;
+const BOTTOM = 225;
 
 const StyledBox = styled("div")<{
   transition: boolean;
