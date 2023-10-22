@@ -8,16 +8,16 @@ import money from "../../assets/money.png";
 import "./style.css";
 import {
   useGetCCBySolutionQuery,
+  useGetCCQuery,
   useSpentCCMutation,
 } from "../../redux/api/carbbynApi";
 
 const GlobalGoal = () => {
   const { id } = useParams();
   const goal = globalGoals[Number(id || 1) - 1];
-
   const { data: getCCBySolutionResponse } = useGetCCBySolutionQuery(goal.type);
-
   const [spentCC] = useSpentCCMutation();
+  const { data: userCC } = useGetCCQuery();
 
   const handleSpentCC = () => {
     if (!goal) return;
@@ -28,7 +28,13 @@ const GlobalGoal = () => {
   };
 
   return (
-    <Box className="page-with-navigation" bgcolor={goal.color} height="100vh">
+    <Box
+      className="page-with-navigation"
+      sx={{
+        background: `linear-gradient(180deg, #1d0093 0%, ${goal.color} 27.14%)`,
+      }}
+      height="100vh"
+    >
       <NavigationTopBar
         label={`${goal.id}. ${goal.goal}`}
         backIcon={<ArrowBackRoundedIcon />}
@@ -42,7 +48,10 @@ const GlobalGoal = () => {
               <Box m={2}>
                 <Typography>Donated by now:</Typography>
                 <Typography my={2} variant="h3">
-                  {getCCBySolutionResponse ? Math.floor(getCCBySolutionResponse?.cc * 100 * 8.2) / 100 : 0} $
+                  {getCCBySolutionResponse
+                    ? Math.floor(getCCBySolutionResponse?.cc * 100 * 8.2) / 100
+                    : 0}{" "}
+                  $
                 </Typography>
               </Box>
             </Grid>
@@ -83,6 +92,7 @@ const GlobalGoal = () => {
                   borderColor: "rgba(255, 255, 255, 0.33)",
                 },
               }}
+              disabled={userCC === 0}
               variant="outlined"
               onClick={handleSpentCC}
             >
