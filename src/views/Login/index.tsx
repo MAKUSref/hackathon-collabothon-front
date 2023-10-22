@@ -8,6 +8,7 @@ import logoSvg from "../../assets/logo.svg";
 import Logo from "../../components/Logo";
 import Footer from "../../components/Footer";
 import { useAppSelector } from "../../redux/hooks";
+import { StyledContainer } from "../../components/BgContainer/BgContainer.style";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -34,32 +35,34 @@ const Login = () => {
   }, [navigate, token]);
 
   return (
-    <Stack justifyContent="center" height="100vh">
-      <Stack>
-        <Stack direction="row" mb={4} justifyContent="center">
-          <img src={logoSvg} />
+    <StyledContainer>
+      <Stack justifyContent="center" height="100vh">
+        <Stack>
+          <Stack direction="row" mb={4} justifyContent="center">
+            <img src={logoSvg} />
+          </Stack>
+          <Box my={2}>
+            <Logo size="l" />
+          </Box>
+          <Typography variant="body1" px={8} textAlign="center" mb={16}>
+            Collect Carbon Credits from eco-frindly activieties and donate them
+            to <strong>Global Goals</strong>
+          </Typography>
+          <Stack direction="row" justifyContent="center">
+            <GoogleLogin
+              containerProps={{ style: { padding: "20px" } }}
+              shape="pill"
+              theme="filled_blue"
+              size="large"
+              width="341px"
+              onSuccess={handleOnSuccess}
+              onError={handleOnError}
+            />
+          </Stack>
         </Stack>
-        <Box my={2}>
-          <Logo size="l" />
-        </Box>
-        <Typography variant="body1" px={8} textAlign="center" mb={16}>
-          Collect Carbon Credits from eco-frindly activieties and donate them to{" "}
-          <strong>Global Goals</strong>
-        </Typography>
-        <Stack direction="row" justifyContent="center">
-          <GoogleLogin
-            containerProps={{ style: { padding: "20px" } }}
-            shape="pill"
-            theme="filled_blue"
-            size="large"
-            width="341px"
-            onSuccess={handleOnSuccess}
-            onError={handleOnError}
-          />
-        </Stack>
+        <Footer />
       </Stack>
-      <Footer />
-    </Stack>
+    </StyledContainer>
   );
 };
 

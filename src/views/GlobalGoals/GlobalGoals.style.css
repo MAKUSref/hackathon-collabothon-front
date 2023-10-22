@@ -1,4 +1,5 @@
 .global-goals-content {
+  margin-top: 80px;
   height: 670px;
   box-sizing: content-box;
   /* margin-bottom: 100px; */
@@ -7,7 +8,10 @@
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px; */
+  padding: 5px;
+  padding-top: 40px;
   overflow: scroll;
+  background-color: white;
 }
 
 .global-goal {
@@ -18,4 +22,34 @@
   flex-direction: column;
   justify-content: space-between;
   /* width: ; */
+}
+
+.background-waves {
+  height: 120px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background-color: #1e0194;
+}
+
+.waves-img {
+  position: absolute;
+  height: 50px;
+  top: 95px;
+  width: 100%;
+  object-fit: fill;
+  z-index: 2;
+}
+
+.goals-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.goals-logo-img {
+  position: absolute;
+  height: 100px;
+  top: 70px;
+  z-index: 3;
 }

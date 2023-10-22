@@ -4,6 +4,8 @@ import PATHS from "../../router/paths";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 import "./GlobalGoals.style.css";
 import { globalGoals } from "./goals";
+import WAVES_IMG from "../../assets/waves.png";
+import GOALS_LOGO from "../../assets/goals-logo.svg";
 
 const GlobalGoals = () => {
   return (
@@ -13,10 +15,16 @@ const GlobalGoals = () => {
         backIcon={<ArrowBackRoundedIcon />}
         navigateTo={PATHS.HOME}
       />
+      <Box className="background-waves" />
+      <img className="waves-img" role="presentation" src={WAVES_IMG} />
+      <Box className="goals-logo">
+        <img className="goals-logo-img" role="presentation" src={GOALS_LOGO} />
+      </Box>
+
       <Grid container className="global-goals-content">
         {globalGoals.map(({ id, goal, color, icon }) => (
           <Grid item xs={6}>
-            <Box m="5px" bgcolor={color} className="global-goal">
+            <Box m="7px" bgcolor={color} className="global-goal">
               <Stack direction="row">
                 <Typography fontSize="14px" fontWeight={600}>
                   {id}.
