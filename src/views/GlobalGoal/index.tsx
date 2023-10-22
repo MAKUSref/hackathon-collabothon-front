@@ -11,6 +11,8 @@ import {
   useGetCCQuery,
   useSpentCCMutation,
 } from "../../redux/api/carbbynApi";
+import { useAppDispatch } from "../../redux/hooks";
+import { setFirstDonateAchievement } from "../../redux/session/sessionSlice";
 
 const GlobalGoal = () => {
   const { id } = useParams();
@@ -18,12 +20,14 @@ const GlobalGoal = () => {
   const { data: getCCBySolutionResponse } = useGetCCBySolutionQuery(goal.type);
   const [spentCC] = useSpentCCMutation();
   const { data: userCC } = useGetCCQuery();
+  const dispatch = useAppDispatch();
 
   const handleSpentCC = () => {
     if (!goal) return;
 
     spentCC(goal.type)
-      .then(() => console.log("donated"))
+      .unwrap()
+      .then(() => dispatch(setFirstDonateAchievement()))
       .catch(console.log);
   };
 
@@ -49,7 +53,7 @@ const GlobalGoal = () => {
                 <Typography>Donated by now:</Typography>
                 <Typography my={2} variant="h3">
                   {getCCBySolutionResponse
-                    ? Math.floor(getCCBySolutionResponse?.cc * 100 * 8.2) / 100
+                    ? Math.floor(getCCBySolutionResponse?.cc * 100) / 100
                     : 0}{" "}
                   $
                 </Typography>
