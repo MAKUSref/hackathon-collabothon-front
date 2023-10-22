@@ -8,6 +8,7 @@ import GlobalGoals from "../views/GlobalGoals";
 import { Typography } from "@mui/material";
 import GlobalGoal from "../views/GlobalGoal";
 import Achievement from "../views/Achievement";
+import LinkedApps from "../views/LinkedApps";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: PATH.ACHIEVEMENTS,
         element: <Achievement />,
+      },
+      {
+        path: PATH.LINKED_APPS,
+        element: <LinkedApps />
       },
       {
         path: "*",

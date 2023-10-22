@@ -6,6 +6,7 @@ module PATHS {
   export const GLOBAL_GOAL = "/global-goals/:id";
   export const ACHIEVEMENT = "/achievement";
   export const ACHIEVEMENTS = "/achievement/:id";
+  export const LINKED_APPS = "/linked-apps";
   export const WELCOME = "/";
 }
 

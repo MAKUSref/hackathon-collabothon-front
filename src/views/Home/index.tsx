@@ -49,7 +49,7 @@ function getFloat(num?: number) {
 
 const Home = () => {
   const { data: cc } = useGetCCQuery();
-  const { data: resHistory, isLoading } = useGetHistoryQuery();
+  const { data: resHistory, isLoading, refetch } = useGetHistoryQuery();
   const isFirstDonateAchievement = useAppSelector(
     (state) => state.session.isFirstDonateAchievement
   );
@@ -76,6 +76,10 @@ const Home = () => {
       navigate("/login");
     }
   }, [navigate, token]);
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   return (
     <StyledContainer>
