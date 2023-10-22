@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { useNavigate } from "react-router";
-import { useAppSelector } from "../../redux/hooks";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import GlassBox from "../../components/GlassBox/GlassBox";
 import Button from "@mui/material/Button";
 import Drawer from "../../components/Drawer/Drawer";
@@ -15,9 +15,9 @@ import WidgetsRoundedIcon from "@mui/icons-material/WidgetsRounded";
 import { useGetCCQuery, useGetHistoryQuery } from "../../redux/api/carbbynApi";
 import { StyledContainer } from "../../components/BgContainer/BgContainer.style";
 import Grid from "@mui/material/Grid";
-import achievment1 from "../../assets/achievment1.png";
-import achievment2 from "../../assets/achievment2.png";
 import { achievements } from "../Achievement/achievements";
+import { setFirstProfitAchievement } from "../../redux/session/sessionSlice";
+import HistoryItemSkeleton from "../../components/HistoryItemSkeleton";
 
 const DonateBtn = styled(Button)({
   borderRadius: "40px",
@@ -49,8 +49,14 @@ function getFloat(num?: number) {
 
 const Home = () => {
   const { data: cc } = useGetCCQuery();
-  const { data: resHistory } = useGetHistoryQuery();
-
+  const { data: resHistory, isLoading } = useGetHistoryQuery();
+  const isFirstDonateAchievement = useAppSelector(
+    (state) => state.session.isFirstDonateAchievement
+  );
+  const isFirstProfitAchievement = useAppSelector(
+    (state) => state.session.isFirstProfitAchievement
+  );
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const token = useAppSelector((state) => state.session.token);
 
@@ -58,6 +64,12 @@ const Home = () => {
     () => resHistory?.history.slice().reverse(),
     [resHistory]
   );
+
+  useEffect(() => {
+    if (cc && cc > 0) {
+      dispatch(setFirstProfitAchievement());
+    }
+  });
 
   useEffect(() => {
     if (!token) {
@@ -89,7 +101,15 @@ const Home = () => {
         </Box>
       </Stack>
       <GlassBox>
-        {!resHistory?.history.length && <div>No transaction history yet</div>}
+        {isLoading && (
+          <>
+            <HistoryItemSkeleton />
+            <HistoryItemSkeleton />
+          </>
+        )}
+        {!resHistory?.history.length && !isLoading && (
+          <div>No transaction history yet</div>
+        )}
         {reversedHistory?.map((historyItem, i) => (
           <HistoryItem
             key={i}
@@ -116,16 +136,30 @@ const Home = () => {
         </Grid>
       </Grid>
       <Grid container alignItems="center" gap="15px">
-        {achievements.map(({ id, thumbnail }) => (
-          <Grid key={`achievement-${id}`} item xs={2}>
+        {isFirstDonateAchievement && (
+          <Grid key={`achievement-${achievements[0].id}`} item xs={2}>
             <IconButton
-              onClick={() => navigate(`${PATHS.ACHIEVEMENT}/${id}`)}
+              onClick={() =>
+                navigate(`${PATHS.ACHIEVEMENT}/${achievements[0].id}`)
+              }
               sx={{ paddingTop: 0, paddingBottom: 0 }}
             >
-              <img src={thumbnail} />
+              <img src={achievements[0].thumbnail} />
             </IconButton>
           </Grid>
-        ))}
+        )}
+        {isFirstProfitAchievement && (
+          <Grid key={`achievement-${achievements[1].id}`} item xs={2}>
+            <IconButton
+              onClick={() =>
+                navigate(`${PATHS.ACHIEVEMENT}/${achievements[1].id}`)
+              }
+              sx={{ paddingTop: 0, paddingBottom: 0 }}
+            >
+              <img src={achievements[1].thumbnail} />
+            </IconButton>
+          </Grid>
+        )}
       </Grid>
       <DonateBtn
         onClick={() => {

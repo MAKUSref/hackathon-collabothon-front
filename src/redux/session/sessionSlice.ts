@@ -8,17 +8,28 @@ export interface SessionState {
   email?: string;
   username?: string;
   picture?: string;
+  isFirstDonateAchievement: boolean;
+  isFirstProfitAchievement: boolean;
 }
 
-const initialState: SessionState = {};
+const initialState: SessionState = {
+  isFirstDonateAchievement: false,
+  isFirstProfitAchievement: false,
+};
 
 const sessionSlice = createSlice({
   name: "session",
   initialState,
   reducers: {
+    setFirstDonateAchievement(state) {
+      state.isFirstDonateAchievement = true;
+    },
+    setFirstProfitAchievement(state) {
+      state.isFirstProfitAchievement = true;
+    },
     setToken(state, action: PayloadAction<JWT>) {
       state.token = action.payload;
-      
+
       const { email, name, picture } = jwt_decode(action.payload) as {
         email: string;
         name: string;
@@ -34,6 +45,8 @@ const sessionSlice = createSlice({
       state.email = undefined;
       state.username = undefined;
       state.picture = undefined;
+      state.isFirstDonateAchievement = false;
+      state.isFirstProfitAchievement = false;
     },
     logOut(state) {
       sessionSlice.caseReducers.clearCurrentSessionData(state);
@@ -41,7 +54,12 @@ const sessionSlice = createSlice({
   },
 });
 
-export const { setToken, logOut, clearCurrentSessionData } =
-  sessionSlice.actions;
+export const {
+  setToken,
+  logOut,
+  clearCurrentSessionData,
+  setFirstDonateAchievement,
+  setFirstProfitAchievement,
+} = sessionSlice.actions;
 
 export default sessionSlice.reducer;
