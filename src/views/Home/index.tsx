@@ -77,7 +77,7 @@ const Home = () => {
         </Stack>
         <Typography sx={{ userSelect: "none" }} variant="h1" textAlign="center">
           {getInt(cc)}
-          <StyledCCSmall>.{getFloat(cc)}</StyledCCSmall>
+          <StyledCCSmall>. {getFloat(cc)}</StyledCCSmall>
         </Typography>
         <Box sx={{ userSelect: "none" }} mb={4} textAlign="center">
           <img src={logoLSvg} />

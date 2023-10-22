@@ -4,7 +4,7 @@ import { RootState } from "../store";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: `/api`,
+    baseUrl: `https://collabothon23fra-1253.lm.r.appspot.com/api`,
     prepareHeaders: (headers, { getState }) => {
       const session = (getState() as RootState).session;
 

@@ -3,6 +3,7 @@ module PATHS {
   export const HOME = "/home";
   export const LOGIN = "/login";
   export const GLOBAL_GOALS = "/global-goals";
+  export const GLOBAL_GOAL = "/global-goals/:id";
   export const WELCOME = "/";
 }
 
