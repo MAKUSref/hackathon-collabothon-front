@@ -48,7 +48,7 @@ function getFloat(num?: number) {
 }
 
 const Home = () => {
-  const { data: cc } = useGetCCQuery();
+  const { data: cc, refetch: refetchCC } = useGetCCQuery();
   const { data: resHistory, isLoading, refetch } = useGetHistoryQuery();
   const isFirstDonateAchievement = useAppSelector(
     (state) => state.session.isFirstDonateAchievement
@@ -78,10 +78,13 @@ const Home = () => {
   }, [navigate, token]);
 
   useEffect(() => {
-    const id = setInterval(() => refetch(), 2000);
+    const id = setInterval(() => {
+      refetch();
+      refetchCC();
+    }, 1200);
 
     return () => clearInterval(id);
-  }, [refetch]);
+  }, [refetch, refetchCC]);
 
   return (
     <StyledContainer>
