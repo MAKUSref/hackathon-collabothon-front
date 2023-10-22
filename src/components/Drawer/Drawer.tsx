@@ -114,7 +114,7 @@ const Drawer = () => {
               />
               <Item
                 label="See apps"
-                action={() => {}}
+                action={() => navigate(PATHS.LINKED_APPS)}
                 icon={<WidgetsRoundedIcon />}
               />
               <Item
