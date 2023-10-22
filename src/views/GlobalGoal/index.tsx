@@ -53,7 +53,7 @@ const GlobalGoal = () => {
                 <Typography>Donated by now:</Typography>
                 <Typography my={2} variant="h3">
                   {getCCBySolutionResponse
-                    ? Math.floor(getCCBySolutionResponse?.cc * 100) / 100
+                    ? Math.floor(getCCBySolutionResponse?.cc * 100 * 8.2) / 100
                     : 0}{" "}
                   $
                 </Typography>
