@@ -124,47 +124,65 @@ const Home = () => {
           />
         ))}
       </GlassBox>
-      <Grid
-        container
-        alignItems="center"
-        marginTop={8}
-        padding="8px 8px 0 15px"
-      >
-        <Grid sx={{ fontSize: "12px" }} item xs={10}>
-          Achievements
-        </Grid>
-        <Grid textAlign="right" item xs={2}>
-          <IconButton>
-            <WidgetsRoundedIcon sx={{ width: "12px" }} />
-          </IconButton>
-        </Grid>
-      </Grid>
-      <Grid container alignItems="center" gap="15px">
-        {isFirstDonateAchievement && (
-          <Grid key={`achievement-${achievements[0].id}`} item xs={2}>
-            <IconButton
-              onClick={() =>
-                navigate(`${PATHS.ACHIEVEMENT}/${achievements[0].id}`)
-              }
-              sx={{ paddingTop: 0, paddingBottom: 0 }}
-            >
-              <img src={achievements[0].thumbnail} />
+      
+      <Box position="fixed" bottom="110px" width="100%" left="0" px={3}>
+        <Grid
+          container
+          alignItems="center"
+          marginTop={8}
+          padding="8px 8px 0 15px"
+        >
+          <Grid sx={{ fontSize: "12px" }} item xs={10}>
+            Achievements
+          </Grid>
+          <Grid textAlign="right" item xs={2}>
+            <IconButton>
+              <WidgetsRoundedIcon sx={{ width: "12px" }} />
             </IconButton>
           </Grid>
-        )}
-        {isFirstProfitAchievement && (
-          <Grid key={`achievement-${achievements[1].id}`} item xs={2}>
-            <IconButton
-              onClick={() =>
-                navigate(`${PATHS.ACHIEVEMENT}/${achievements[1].id}`)
-              }
-              sx={{ paddingTop: 0, paddingBottom: 0 }}
+        </Grid>
+
+        <Grid container alignItems="center" gap="15px">
+          {isFirstDonateAchievement && (
+            <Grid key={`achievement-${achievements[0].id}`} item xs={2}>
+              <IconButton
+                onClick={() =>
+                  navigate(`${PATHS.ACHIEVEMENT}/${achievements[0].id}`)
+                }
+                sx={{ paddingTop: 0, paddingBottom: 0 }}
+              >
+                <img src={achievements[0].thumbnail} />
+              </IconButton>
+            </Grid>
+          )}
+          {isFirstProfitAchievement && (
+            <Grid key={`achievement-${achievements[1].id}`} item xs={2}>
+              <IconButton
+                onClick={() =>
+                  navigate(`${PATHS.ACHIEVEMENT}/${achievements[1].id}`)
+                }
+                sx={{ paddingTop: 0, paddingBottom: 0 }}
+              >
+                <img src={achievements[1].thumbnail} />
+              </IconButton>
+            </Grid>
+          )}
+
+          {!isFirstDonateAchievement && !isFirstProfitAchievement && (
+            <Grid
+              item
+              xs={12}
+              alignItems="center"
+              display="flex"
+              justifyContent="center"
+              height="60px"
             >
-              <img src={achievements[1].thumbnail} />
-            </IconButton>
-          </Grid>
-        )}
-      </Grid>
+              <Typography>You have no Achievements yet.</Typography>
+            </Grid>
+          )}
+        </Grid>
+      </Box>
+
       <DonateBtn
         onClick={() => {
           navigate(PATHS.GLOBAL_GOALS);
@@ -193,6 +211,18 @@ const Home = () => {
           <img src={globalGoals} />
         </Box>
       </DonateBtn>
+      <GlassBox>
+        {!resHistory?.history.length && <div>No transaction history yet</div>}
+        {reversedHistory?.map((historyItem, i) => (
+          <HistoryItem
+            key={i}
+            amount={historyItem.cc}
+            appLogo={historyItem.linkedApp.logo}
+            appTitle={historyItem.linkedApp.name}
+            action="Flora"
+          />
+        ))}
+      </GlassBox>
     </StyledContainer>
   );
 };

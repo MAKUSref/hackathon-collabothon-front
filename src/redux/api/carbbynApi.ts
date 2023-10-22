@@ -61,7 +61,7 @@ export const {
   useLoginMutation,
   useGetCCQuery,
   useGetHistoryQuery,
-  useGetLinkedAppQuery,
+  useGetLinkedAppsQuery,
   useGetCCBySolutionQuery,
 
   useSpentCCMutation,

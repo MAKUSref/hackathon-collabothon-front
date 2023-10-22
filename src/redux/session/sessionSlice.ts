@@ -8,8 +8,8 @@ export interface SessionState {
   email?: string;
   username?: string;
   picture?: string;
-  isFirstDonateAchievement: boolean;
-  isFirstProfitAchievement: boolean;
+  isFirstDonateAchievement?: boolean;
+  isFirstProfitAchievement?: boolean;
 }
 
 const initialState: SessionState = {

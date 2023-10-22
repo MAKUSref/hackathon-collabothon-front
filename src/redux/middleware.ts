@@ -44,7 +44,7 @@ export function preloadSession(): SessionState {
       name: string;
     };
 
-    return { token, email, username: name};
+    return { token, email, username: name };
   }
 
   return { token };
