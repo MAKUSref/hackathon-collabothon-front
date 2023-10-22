@@ -17,6 +17,7 @@ import { StyledContainer } from "../../components/BgContainer/BgContainer.style"
 import Grid from "@mui/material/Grid";
 import achievment1 from "../../assets/achievment1.png";
 import achievment2 from "../../assets/achievment2.png";
+import { achievements } from "../Achievement/achievements";
 
 const DonateBtn = styled(Button)({
   borderRadius: "40px",
@@ -114,19 +115,17 @@ const Home = () => {
           </IconButton>
         </Grid>
       </Grid>
-      <Grid container alignItems="center">
-        <Grid item xs={2}>
-          <IconButton sx={{ paddingTop: 0 }}>
-            <img src={achievment1} width="61px" height="61px" />
-          </IconButton>
-        </Grid>
-        <Grid item xs={2}>
-          <IconButton>
-            <IconButton sx={{ paddingTop: 0 }}>
-              <img src={achievment2} />
+      <Grid container alignItems="center" gap="15px">
+        {achievements.map(({ id, thumbnail }) => (
+          <Grid key={`achievement-${id}`} item xs={2}>
+            <IconButton
+              onClick={() => navigate(`${PATHS.ACHIEVEMENT}/${id}`)}
+              sx={{ paddingTop: 0, paddingBottom: 0 }}
+            >
+              <img src={thumbnail} />
             </IconButton>
-          </IconButton>
-        </Grid>
+          </Grid>
+        ))}
       </Grid>
       <DonateBtn
         onClick={() => {

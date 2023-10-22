@@ -7,6 +7,7 @@ import Welcome from "../views/Welcome";
 import GlobalGoals from "../views/GlobalGoals";
 import { Typography } from "@mui/material";
 import GlobalGoal from "../views/GlobalGoal";
+import Achievement from "../views/Achievement";
 
 const router = createBrowserRouter([
   {
@@ -35,7 +36,11 @@ const router = createBrowserRouter([
       },
       {
         path: PATH.GLOBAL_GOAL,
-        element: <GlobalGoal />
+        element: <GlobalGoal />,
+      },
+      {
+        path: PATH.ACHIEVEMENTS,
+        element: <Achievement />,
       },
       {
         path: "*",
