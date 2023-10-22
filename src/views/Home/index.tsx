@@ -12,6 +12,7 @@ import ccSmSvg from "../../assets/ccSm.svg";
 import globalGoals from "../../assets/global-goals.jpg";
 import PATHS from "../../router/paths";
 import { useGetCCQuery, useGetHistoryQuery } from "../../redux/api/carbbynApi";
+import { StyledContainer } from "../../components/BgContainer/BgContainer.style";
 
 const DonateBtn = styled(Button)({
   borderRadius: "40px",
@@ -60,7 +61,7 @@ const Home = () => {
   }, [navigate, token]);
 
   return (
-    <>
+    <StyledContainer>
       <Drawer />
       <Stack mt={3}>
         <Stack
@@ -76,7 +77,7 @@ const Home = () => {
         </Stack>
         <Typography sx={{ userSelect: "none" }} variant="h1" textAlign="center">
           {getInt(cc)}
-          <StyledCCSmall>.{getFloat(cc)}</StyledCCSmall>
+          <StyledCCSmall>. {getFloat(cc)}</StyledCCSmall>
         </Typography>
         <Box sx={{ userSelect: "none" }} mb={4} textAlign="center">
           <img src={logoLSvg} />
@@ -122,7 +123,7 @@ const Home = () => {
           <img src={globalGoals} />
         </Box>
       </DonateBtn>
-    </>
+    </StyledContainer>
   );
 };
 

@@ -5,6 +5,8 @@ import Login from "../views/Login";
 import BgContainer from "../components/BgContainer";
 import Welcome from "../views/Welcome";
 import GlobalGoals from "../views/GlobalGoals";
+import { Typography } from "@mui/material";
+import GlobalGoal from "../views/GlobalGoal";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,18 @@ const router = createBrowserRouter([
       {
         path: PATH.GLOBAL_GOALS,
         element: <GlobalGoals />,
+      },
+      {
+        path: PATH.GLOBAL_GOAL,
+        element: <GlobalGoal />
+      },
+      {
+        path: "*",
+        element: (
+          <Typography textAlign="center" variant="h4">
+            404 not found
+          </Typography>
+        ),
       },
     ],
   },

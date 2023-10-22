@@ -20,6 +20,8 @@ import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
 import { ReactJSXElement } from "@emotion/react/types/jsx-namespace";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { logOut } from "../../redux/session/sessionSlice";
+import { useNavigate } from "react-router-dom";
+import PATHS from "../../router/paths";
 
 interface ItemProps {
   label: string;
@@ -43,7 +45,9 @@ const Item = ({ action, label, icon }: ItemProps) => {
 const Drawer = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { email, picture, username } = useAppSelector((state) => state.session);
+  
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -105,7 +109,7 @@ const Drawer = () => {
             <List>
               <Item
                 label="About this app & Credit Carbon Info"
-                action={() => {}}
+                action={() => navigate(PATHS.WELCOME)}
                 icon={<HelpOutlineRoundedIcon />}
               />
               <Item
